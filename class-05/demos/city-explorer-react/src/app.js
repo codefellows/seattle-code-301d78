@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './components/header.js';
@@ -7,13 +7,14 @@ import Main from './components/main.js';
 import About from './components/about.js';
 import Nav from './components/nav.js';
 
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
-class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <Router>
@@ -34,5 +35,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
