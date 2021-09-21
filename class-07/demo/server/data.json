@@ -1,0 +1,14 @@
+[
+  {
+    "name": "artichoke",
+    "vegetarian": true
+  },
+  {
+    "name": "steak",
+    "vegetarian": false
+  },
+  {
+    "name": "cucumber",
+    "vegetarian": true
+  }
+]

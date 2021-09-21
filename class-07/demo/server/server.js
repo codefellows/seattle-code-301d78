@@ -1,31 +1,34 @@
 'use strict';
 
-const express = require('express');
+
 require('dotenv').config();
+
+const express = require('express');
 const cors = require('cors');
+const foods = require('./data.json');
 
-const app = express();
-
-app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 
-const myTargetList = ['shoes', 'bags', 'games', 'cleaning supples'];
+const app = express();
+
+// middleware
+app.use(cors());
+
 
 app.get('/', (request, response) => {
-  response.send('hello from the home route!');
+  response.status(200).send('I am home at last!');
 });
 
-app.get('/bananas', (request, response) => {
-  response.json({"bananas":"are cool"})
-});
+app.get('/foods', (request, response) => {
 
-app.get('/shoppingList', (request, response) => {
-  response.status(200).send(myTargetList);
-});
+  const veg = request.query.veg === "true";
 
-app.get('*', (request, response) => {
-  response.status(404).send('not found');
+  const firstVeggy = foods.find(food => food.vegetarian === veg);
+
+  response.send(firstVeggy);
+
 })
 
-app.listen(PORT, () => console.log(`listening on ${PORT}`));
+
+app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
